@@ -4,7 +4,6 @@ import com.example.managestudent.exception.RecordNotFoundException;
 import com.example.managestudent.model.Course;
 import com.example.managestudent.model.Student;
 import com.example.managestudent.service.CourseService;
-import com.sun.corba.se.spi.copyobject.ReflectiveCopyException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -56,9 +55,10 @@ public class CourseController {
         if (courseData.isPresent()) {
             return new ResponseEntity<>(courseData.get(), HttpStatus.OK);
         } else {
-            throw new RecordNotFoundException("The courseId" + id + " is not exist");
+            throw new RecordNotFoundException("The courseId " + id + " is not exist");
         }
     }
+
 
     @ApiOperation(value = "Add a course")
     @PostMapping

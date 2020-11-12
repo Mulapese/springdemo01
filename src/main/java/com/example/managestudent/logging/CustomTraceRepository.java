@@ -20,12 +20,6 @@ public class CustomTraceRepository implements HttpTraceRepository {
     @Autowired
     ITraceLogRepository repository;
 
-    @Autowired
-    IStudentCourseRepository studentCourseRepository;
-
-    @Autowired
-    StudentService studentService;
-
     AtomicReference<HttpTrace> lastTrace = new AtomicReference<>();
 
     @Override
@@ -45,8 +39,5 @@ public class CustomTraceRepository implements HttpTraceRepository {
         int status = trace.getResponse().getStatus();
 
         repository.save(new TraceLog(method, uri, status, cal));
-        System.out.println(studentService.findCourseByStudentId("SE05665"));
     }
-
-
 }

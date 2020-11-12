@@ -12,4 +12,6 @@ public interface ICourseService{
     Optional<Course> findById(String id);
     Course insert(Course course);
     List<Student> findStudentByCourseId(String coursesId);
+    List<Course> findByNameContaining(String name);
+    void deleteById(String id);
 }
