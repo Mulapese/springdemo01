@@ -1,14 +1,20 @@
 package com.example.managestudent.service;
 
+import com.example.managestudent.controller.CourseController;
 import com.example.managestudent.model.Course;
 import com.example.managestudent.repository.ICourseRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,14 +22,18 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+//@WebMvcTest(CourseService.class)
+//@AutoConfigureMockMvc(addFilters = false)
 class CourseServiceTest {
 
     @Mock
-    ICourseRepository courseRepository;
+    private ICourseRepository courseRepository;
 
     @InjectMocks
-    CourseService courseService;
+//    @Mock
+//    @Autowired
+    private CourseService courseService;
 
     @Test
     void findAll() {
@@ -33,7 +43,7 @@ class CourseServiceTest {
         List<Course> courses = Arrays.asList(course);
         Mockito.doReturn(courses).when(courseRepository).findAll();
 
-        List<Course> actualCourses = (List<Course>) courseService.findAll();
+        List<Course> actualCourses = courseService.findAll();
         assert (actualCourses.size() == 1);
     }
 

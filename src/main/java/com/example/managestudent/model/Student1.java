@@ -9,10 +9,10 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "student")
+@Table(name = "student1")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Student1 {
     @Id
     private String studentId;
 
@@ -20,4 +20,6 @@ public class Student {
 
     @Temporal(TemporalType.DATE)
     private Date birthday;
+
+    private Date createdTime;
 }

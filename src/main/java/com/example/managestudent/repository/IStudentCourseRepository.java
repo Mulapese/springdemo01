@@ -4,9 +4,11 @@ import com.example.managestudent.model.StudentCourse;
 import com.example.managestudent.model.StudentCourseIdentity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface IStudentCourseRepository  extends JpaRepository<StudentCourse, StudentCourseIdentity> {
 
     @Query(value = "SELECT course_id FROM student_course sc WHERE student_id = ?1", nativeQuery = true)

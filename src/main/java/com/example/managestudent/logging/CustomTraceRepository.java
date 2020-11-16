@@ -1,8 +1,5 @@
 package com.example.managestudent.logging;
 
-import com.example.managestudent.repository.IStudentCourseRepository;
-import com.example.managestudent.repository.ITraceLogRepository;
-import com.example.managestudent.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
@@ -31,6 +28,7 @@ public class CustomTraceRepository implements HttpTraceRepository {
     public void add(HttpTrace trace) {
         String uri = trace.getRequest().getUri().toString();
 
+        // Convert timestamp to calendar
         Instant timestamp = trace.getTimestamp();
         ZonedDateTime zdt = ZonedDateTime.ofInstant(timestamp, ZoneId.systemDefault());
         Calendar cal = GregorianCalendar.from(zdt);
